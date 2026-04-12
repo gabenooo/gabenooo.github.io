@@ -1,0 +1,108 @@
+/* ===== GLOBAL STYLES ===== */
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  /* Animated gradient background */
+  background: linear-gradient(270deg, #00ebb0, #003066, #01505a, #1b1b1b);
+  background-size: 800% 800%;
+
+  animation: waveBG 90s ease infinite;
+}
+
+/* Background animation keyframes */
+@keyframes waveBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  text-align: center;
+  padding: 50px 20px 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: #ccc;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+/* ===== GALLERY LAYOUT ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto; /* centers gallery */
+}
+
+/* ===== PHOTO CARD ===== */
+.photo {
+  text-align: center;
+}
+
+/* Image styling */
+.photo img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+
+  display: block;
+  margin: 0 auto;
+
+  border-radius: 10px;
+
+  /* Smooth hover animation */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect */
+.photo img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* Title under image */
+.photo h3 {
+  margin: 12px 0 6px;
+  font-weight: normal;
+}
+
+/* Caption text */
+.caption {
+  color: #aaa;
+  font-size: 0.9rem;
+  padding: 0 12px;
+  line-height: 1.4;
+}
+
+/* ===== OPTIONAL: MAKE IT LOOK NICER ON SMALL SCREENS ===== */
+@media (max-width: 600px) {
+  .site-header h1 {
+    font-size: 2rem;
+  }
+
+  .gallery {
+    padding: 20px;
+    gap: 20px;
+  }
+}
