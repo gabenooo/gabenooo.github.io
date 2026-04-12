@@ -17,3 +17,20 @@ fetch('data/images.json')
     });
   })
   .catch(err => console.error('Error loading images:', err));
+
+const audio = document.getElementById("bg-music");
+const button = document.getElementById("music-btn");
+
+let isPlaying = false;
+
+button.addEventListener("click", () => {
+  if (!isPlaying) {
+    audio.play();
+    button.textContent = "⏸";
+    isPlaying = true;
+  } else {
+    audio.pause();
+    button.textContent = "▶";
+    isPlaying = false;
+  }
+});
