@@ -23,7 +23,7 @@ fetch('data/images.json')
       const imgSrc = `images/${item.file}`;
 
       div.innerHTML = `
-        <img src="${imgSrc}" alt="${item.title}">
+        <img src="${imgSrc}" alt="${item.title}" loading="lazy">
         <h3>${item.title}</h3>
         <p class="caption">${item.description}</p>
       `;
