@@ -7,14 +7,41 @@ body {
   overflow-x: hidden;
 
   /* Animated gradient background */
-  background: linear-gradient(270deg, #000000, #312005, #0c0b07, #ffffff);
+  /* background: linear-gradient(270deg, #000000, #312005, #0c0b07, #ffffff);
   background-size: 800% 800%;
 
-  animation: waveBG 750s ease infinite;
+  animation: waveBG 750s ease infinite; */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.4); /* adjust darkness */
+  z-index: -1;
+}
+
+/* ===== BACKGROUND VIDEO ===== */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.7) contrast(1.1);
+
+  object-fit: cover; /* fills screen nicely */
+  z-index: -1; /* puts it behind everything */
+
+  opacity: 0.6; /* 🔥 adjust for visibility */
 }
 
 /* Background animation keyframes */
-@keyframes waveBG {
+/* @keyframes waveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -23,8 +50,8 @@ body {
   }
   100% {
     background-position: 0% 50%;
-  }
-}
+  } */
+/* } */
 
 /* ===== HEADER ===== */
 .site-header {
