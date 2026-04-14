@@ -34,10 +34,10 @@ body::before {
   height: 100%;
   filter: brightness(0.7) contrast(1.1);
 
-  object-fit: cover; /* fills screen nicely */
-  z-index: -2; /* puts it behind everything */
+  object-fit: cover; /* fill screen */
+  z-index: -2; /* puts behind everything */
 
-  opacity: 0.6; /* 🔥 adjust for visibility */
+  opacity: 0.6; /* adjust for visibility */
 }
 
 /* Background animation keyframes */
@@ -125,7 +125,7 @@ body::before {
   line-height: 1.4;
 }
 
-/* ===== OPTIONAL: MAKE IT LOOK NICER ON SMALL SCREENS ===== */
+/* ===== OPTIONAL: for SMALL SCREENS ===== */
 @media (max-width: 600px) {
   .site-header h1 {
     font-size: 2rem;

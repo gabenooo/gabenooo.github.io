@@ -28,7 +28,7 @@ fetch('data/images.json')
         <p class="caption">${item.description}</p>
       `;
 
-      // 🔥 LIGHTBOX CLICK
+      // LIGHTBOX CLICK
       div.querySelector("img").addEventListener("click", () => {
         lightbox.classList.add("show");
         lightboxImg.src = imgSrc;
@@ -38,7 +38,7 @@ fetch('data/images.json')
       gallery.appendChild(div);
     });
 
-    // 🔥 CLOSE LIGHTBOX
+    // CLOSE LIGHTBOX
     lightbox.addEventListener("click", () => {
       lightbox.classList.remove("show");
     });
