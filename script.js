@@ -1,3 +1,4 @@
+// ===== SHUFFLE FUNCTION =====
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -5,52 +6,73 @@ function shuffleArray(array) {
   }
 }
 
+// ===== ELEMENTS =====
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxCaption = document.getElementById("lightbox-caption");
+
 // ===== LOAD IMAGES =====
 fetch('data/images.json')
   .then(response => response.json())
   .then(data => {
     shuffleArray(data);
-    const gallery = document.getElementById('gallery');
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxCaption = document.getElementById("lightbox-caption");
 
     data.forEach(item => {
       const div = document.createElement('div');
       div.className = 'photo';
 
-      const imgSrc = `images/${item.file}`;
+      const thumbSrc = `thumbs/${item.file}`;
+      const fullSrc = `images/${item.file}`;
 
       div.innerHTML = `
-        <img src="${imgSrc}" alt="${item.title}" loading="lazy">
+        <img src="${thumbSrc}" alt="${item.title}" loading="lazy">
         <h3>${item.title}</h3>
         <p class="caption">${item.description}</p>
       `;
 
-      // LIGHTBOX CLICK
-      div.querySelector("img").addEventListener("click", () => {
+      const imgElement = div.querySelector("img");
+
+      // LIGHTBOX CLICK w/ progressive loading
+      imgElement.addEventListener("click", () => {
+        // Show thumbnail instantly
+        lightboxImg.src = thumbSrc;
         lightbox.classList.add("show");
-        lightboxImg.src = imgSrc;
+
+        // Load full image in background
+        const img = new Image();
+        img.src = fullSrc;
+
+        img.onload = () => {
+          lightboxImg.src = fullSrc;
+        };
+
+        img.onerror = () => {
+          console.error("Failed to load full image:", fullSrc);
+        };
+
         lightboxCaption.textContent = `${item.title} — ${item.description}`;
       });
 
       gallery.appendChild(div);
     });
-
-    // CLOSE LIGHTBOX
-    lightbox.addEventListener("click", () => {
-      lightbox.classList.remove("show");
-    });
-
-    // ESC key support
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        lightbox.classList.remove("show");
-      }
-    });
   })
   .catch(err => console.error('Error loading images:', err));
+
+
+// ===== LIGHTBOX CONTROLS =====
+
+// Click anywhere to close
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+});
+
+// ESC key to close
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    lightbox.classList.remove("show");
+  }
+});
 
 
 // ===== MUSIC BUTTON =====
@@ -61,7 +83,7 @@ let isPlaying = false;
 
 button.addEventListener("click", () => {
   if (!isPlaying) {
-    audio.volume = 0.4; // nicer default
+    audio.volume = 0.4;
     audio.play();
     button.textContent = "⏸";
     isPlaying = true;
