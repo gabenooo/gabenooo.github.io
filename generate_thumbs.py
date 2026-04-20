@@ -18,10 +18,10 @@ for filename in os.listdir(INPUT_DIR):
 
     try:
         with Image.open(input_path) as img:
-            # Convert to RGB (fixes PNG / weird formats)
+            # convert to RGB (fixes PNG / weird formats)
             img = img.convert("RGB")
 
-            # Resize while maintaining aspect ratio
+            # resize while maintaining aspect ratio
             width, height = img.size
             if width > MAX_WIDTH:
                 new_height = int((MAX_WIDTH / width) * height)
