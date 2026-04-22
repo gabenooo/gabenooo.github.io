@@ -75,21 +75,21 @@ document.addEventListener("keydown", (e) => {
 });
 
 
-// ===== MUSIC BUTTON =====
-const audio = document.getElementById("bg-music");
-const button = document.getElementById("music-btn");
+// // ===== MUSIC BUTTON =====
+// const audio = document.getElementById("bg-music");
+// const button = document.getElementById("music-btn");
 
-let isPlaying = false;
+// let isPlaying = false;
 
-button.addEventListener("click", () => {
-  if (!isPlaying) {
-    audio.volume = 0.4;
-    audio.play();
-    button.textContent = "⏸";
-    isPlaying = true;
-  } else {
-    audio.pause();
-    button.textContent = "▶";
-    isPlaying = false;
-  }
-});
+// button.addEventListener("click", () => {
+//   if (!isPlaying) {
+//     audio.volume = 0.4;
+//     audio.play();
+//     button.textContent = "⏸";
+//     isPlaying = true;
+//   } else {
+//     audio.pause();
+//     button.textContent = "▶";
+//     isPlaying = false;
+//   }
+// });
