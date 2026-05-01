@@ -16,6 +16,11 @@ for filename in os.listdir(INPUT_DIR):
     input_path = os.path.join(INPUT_DIR, filename)
     output_path = os.path.join(OUTPUT_DIR, filename)
 
+    # Skip if thumbnail already exists
+    if os.path.exists(output_path):
+        print(f"↷ Skipping (already exists): {filename}")
+        continue
+
     try:
         with Image.open(input_path) as img:
             # convert to RGB (fixes PNG / weird formats)
